@@ -2,9 +2,6 @@
 Website for Rubber Duck Debugging Show on Twitch
 
 # Migrations
-**bold**
-*italic*
--strikthrough-
 
 ### In Development
 1. Delete everything in migrations/versions
@@ -18,7 +15,3 @@ Website for Rubber Duck Debugging Show on Twitch
 3. Push Code to Github
 4. Pull updated code to production from GitHub
 4. Run `flask db upgrade` on production
-
-```
-flask run
-```

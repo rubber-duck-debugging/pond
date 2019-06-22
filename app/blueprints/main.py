@@ -5,7 +5,3 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
     return 'hello world'
-
-# @main.route('/readme')
-# def readme():
-#     python 
