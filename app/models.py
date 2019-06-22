@@ -6,12 +6,15 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     firstname = db.Column(db.String(64))
+    karma = db.Column(db.Integer)
+    user_class_id = db.Column(db.Integer, db.ForeignKey('user_classes.id'))
 
     questions = relationship("Question", backref='user')
 
-    def __init__(self, username, firstname):
+    def __init__(self, username, firstname, karma=0):
         self.username = username
         self.firstname = firstname
+        self.karma = karma
 
     def __repr__(self):
         return '<User %s>' % (self.username)
@@ -19,6 +22,7 @@ class User(db.Model):
 
 class Question(db.Model):
     __tablename__ = 'questions'
+
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text)
     resolved = db.Column(db.Boolean)
@@ -36,3 +40,20 @@ class Question(db.Model):
 
     def __repr__(self):
         return '<Question %s>' % (self.id)
+
+
+class UserClass(db.Model):
+    __tablename__ = 'user_classes'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    multiplier = db.Column(db.Float)
+
+    users = relationship("User", backref='userclass')
+
+    def __init__(self, name, multiplier):
+        self.name = name
+        self.multiplier = multiplier
+    
+    def __repr__(self):
+        return '<Class %s>' % (self.name)
+
