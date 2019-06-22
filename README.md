@@ -1,7 +1,15 @@
-# pond
+# The Pond
 Website for Rubber Duck Debugging Show on Twitch
 
-# Migrations
+## Development Install Steps
+
+We are developing the Pond for the RubberDuckDebugging show on TwitchTV with Python 3.7.3, so get that installed! If you are unsure how to do that and just getting started head over to the [pyenv](https://github.com/pyenv/pyenv) project and follow the instructions to install it. It's a super simple way to install and manage your python versions. 
+
+If you know how to create a virtual environment do that! Then install the packages we use via `pip install -r requirements.txt`
+
+## Migrations
+
+**BEFORE DOING ANYTHING** make sure to set `FLASK_APP` to `pond.py` by executing `export FLASK_APP=pond.py`
 
 ### In Development
 1. Delete everything in migrations/versions
