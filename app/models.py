@@ -1,10 +1,14 @@
-from app import db
+from . import db
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
-    password_hash = db.Column(db.String(128))
+    firstname = db.Column(db.String(64))
+
+    def __init__(self, username, firstname):
+        self.username = username
+        self.firstname = firstname
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User %s>' % (self.username)

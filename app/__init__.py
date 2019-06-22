@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 db = SQLAlchemy()
-migrate =  Migrate()
+migrate = Migrate()
 
 
 def createApp(configName):
@@ -21,5 +21,8 @@ def createApp(configName):
 
     from .blueprints.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    from .blueprints.user import user as user_blueprint
+    app.register_blueprint(user_blueprint)
 
     return app

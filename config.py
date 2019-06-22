@@ -21,15 +21,6 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    # @classmethod
-    # def init_app(cls, app):
-    #     Config.init_app(app)
-    #     import logging
-    #     from slack_log_handler import SlackLogHandler
-    #     slackHandler = SlackLogHandler(Config.SLACK_LOG_URL)
-    #     slackHandler.setLevel(logging.WARNING)
-    #     app.logger.addHandler(slackHandler)
-
     DEBUG = True
     MAIL_SERVER = 'mail.nexnest.com'
     MAIL_PORT = 587
@@ -40,8 +31,6 @@ class DevelopmentConfig(Config):
     MAIL_SUPPRESS_SEND = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-    #     'postgres://nexnest_development:domislove@localhost:5432/nexnest_development'
 
 
 class TestingConfig(Config):
@@ -55,36 +44,6 @@ class ProductionConfig(Config):
     @classmethod
     def init_app(cls, app):
         Config.init_app(app)
-
-        app.logger.handlers = []
-
-        # import logging
-        # from logging.handlers import RotatingFileHandler
-        # from slack_log_handler import SlackLogHandler
-
-        # # Slack Warning
-        # slackWarningHandler = SlackLogHandler(
-        #     Config.SLACK_WARNING_URL) or Config.SLACK_LOG_URL
-        # slackWarningHandler.setLevel(logging.WARNING)
-        # app.logger.addHandler(slackWarningHandler)
-
-        # # Slack Error
-        # slackErrHandler = SlackLogHandler(
-        #     Config.SLACK_ERROR_URL) or Config.SLACK_LOG_URL
-        # slackErrHandler.setLevel(logging.ERROR)
-        # app.logger.addHandler(slackErrHandler)
-
-        # # Debug Handler
-        # debugHandler = RotatingFileHandler(
-        #     '/var/log/nexnest/debug.log', maxBytes=10000, backupCount=5)
-        # debugHandler.setLevel(logging.DEBUG)
-        # app.logger.addHandler(debugHandler)
-
-        # # Info Handler
-        # infoHandler = RotatingFileHandler(
-        #     '/var/log/nexnest/info.log', maxBytes=10000, backupCount=5)
-        # infoHandler.setLevel(logging.INFO)
-        # app.logger.addHandler(infoHandler)
 
     # MAIL SERVER CONFIG
     MAIL_SERVER = 'mail.nexnest.com'
